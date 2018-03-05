@@ -3,5 +3,5 @@
 #
 mkdir ~/nxPanel/
 wget https://raw.githubusercontent.com/ivanpeso/test/master/base/start.sh -O ~/nxPanel/start.sh
-cd ~/nxPanel/
-echo "Just execute ./start.sh install"
+echo "Files copied in your home dir! Just go to ~/nxPanel/ "
+echo "and execute ./start.sh install"
