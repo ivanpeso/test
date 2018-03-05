@@ -1,7 +1,5 @@
 #!/bin/sh
 # Pocetna verzija idemo
-
-
 nxpanelstop() {
   sudo pkill -F p.id
   echo "Killed"
@@ -9,15 +7,13 @@ nxpanelstop() {
   echo "Done! Bye!"
   exit 1
 }
-
-
 nxpanelrun() {
 MyIpAdress="$(who am i --ips|awk '{print $5}')"
-echo $MyIpAdress >> myip
-
-sudo phpcli -S 192.168.1.7:8080 corePanel.php 1>&- 2>&-  &
+echo $MyIpAdress>>myip
+HostIP="$(ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1')"
+sudo ./phpcli -S 192.168.1.7:8080 corePanel.php 1>&- 2>&-  &
 echo $bldyel"Started! Enjoy configuring! \033[0m \n"$txtrst
-echo "Have fun!"
+echo "Web panel address: "$HostIP":8080"
 }
 nxpanelinstall() {
 txtbld=$(tput bold)             # Bold
