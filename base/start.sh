@@ -14,9 +14,9 @@ nxpanelstop() {
 nxpanelrun() {
 MyIpAdress="$(who am i --ips|awk '{print $5}')"
 echo $MyIpAdress
-echo $MyIpAdress >> nxPanel/myip
+echo $MyIpAdress >> myip
 
-sudo nxPanel/phpcli -S 192.168.1.7:8080 nxPanel/corePanel.php 1>&- 2>&-  &
+sudo phpcli -S 192.168.1.7:8080 corePanel.php 1>&- 2>&-  &
 echo $bldyel"Started! Enjoy configuring! \033[0m \n"$txtrst
 echo "Have fun!"
 }
@@ -74,8 +74,6 @@ fi
 # INSTALIRAN PHP7.2 NASTAVLJAMO
 echo $bldblu"$PHPINSTALLVERSION INSTALLED! Just few more steps..."$txtrst
 # GENERATE SCRIPT STRUCTURE
-echo $bldyel"$PHPREPO Creating directory nxPanel/ ..."$txtrst
-mkdir nxPanel
 echo $bldyel"$PHPREPO Generating symbolic link to php7.2-cli  ..."$txtrst
 ln -s /usr/bin/php7.2 phpcli
 echo $bldyel"$PHPREPO Downloading core files in directory ..."$txtrst
