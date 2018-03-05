@@ -13,7 +13,6 @@ nxpanelstop() {
 
 nxpanelrun() {
 MyIpAdress="$(who am i --ips|awk '{print $5}')"
-echo $MyIpAdress
 echo $MyIpAdress >> myip
 
 sudo phpcli -S 192.168.1.7:8080 corePanel.php 1>&- 2>&-  &
@@ -82,6 +81,7 @@ wget https://raw.githubusercontent.com/ivanpeso/test/master/base/corePanel.php
 
 case "$1" in
         start)
+            sudo echo ""
             nxpanelrun
             ;;
 
